@@ -1,17 +1,18 @@
-PATH
-  remote: .
-  specs:
-    flash_s3 (0.0.1)
-      activesupport
-
-PATH
-  remote: ../flash_s3_test
+GIT
+  remote: https://github.com/shwoodard/flash_s3_test.git
+  revision: 9512fa579e2c599f5f9410ed863fef7ffa7e7e27
   specs:
     flash_s3_test (0.0.1)
       rails
       rspec
       rspec-rails
       sqlite3
+
+PATH
+  remote: .
+  specs:
+    flash_s3 (0.0.1)
+      activesupport
 
 GEM
   remote: http://rubygems.org/
