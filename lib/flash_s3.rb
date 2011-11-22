@@ -9,6 +9,10 @@ module FlashS3
   autoload :Attachment
 
   class << self
+    def configure
+      yield(configuration)
+    end
+
     def configuration
       @configuration ||= ActiveSupport::OrderedOptions.new
     end
@@ -41,10 +45,6 @@ module FlashS3
 
           define_method :"#{name}" do
             Attachment.new(name, self.class.s3_file_attachment_definitions[name], self)
-          end
-
-          define_method :"#{name}_valid?" do
-            self.class.s3_file_attachment_definitions[name] && self.class.s3_file_attachment_definitions[name].valid?
           end
 
           before_save :persist_flash_s3_attachment_meta_data, :if => lambda {|record| record.flash_s3_meta_data_changed?(name) }

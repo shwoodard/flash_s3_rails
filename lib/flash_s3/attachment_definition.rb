@@ -1,6 +1,5 @@
 module FlashS3
   class AttachmentDefinition
-    attr_accessor :attachment, :bucket
     attr_reader :name
 
     def initialize(name)
@@ -11,14 +10,14 @@ module FlashS3
       bucket.present?
     end
 
-    def configure
-      yield(configuration)
+    def configure(&blk)
+      instance_eval(&blk)
     end
 
-    private
-
-    def configuration
-      @configuration ||= FlashS3.configuration
+    def bucket(*args)
+      val, *_ = args
+      @bucket = val if val
+      @bucket || FlashS3.configuration.bucket
     end
   end
 end

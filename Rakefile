@@ -35,9 +35,12 @@ end
 
 require 'flash_s3_test/rails/flash_s3_test/config/application'
 
+task :server => 'db:migrate:reset' do
+  app = Rack::Builder.new { run FlashS3Test::Application }.to_app
+  Rack::Handler::Thin.run app, :Port => 3000
+end
+
 FlashS3Test::Application.load_tasks
-
-
 
 desc 'Default: run specs.'
 task :default => :spec

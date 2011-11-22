@@ -2,19 +2,26 @@ require 'spec_helper'
 require 'rails_spec_helper'
 
 describe Upload do
-  it 'should respond to new and allow attribute assignment' do
-    Upload.new(:upload_s3_key => 'foo/bar.png').should be_valid
-  end
-
-  context 'when assigning s3 parameters to the attachment' do
+  context 'when declaring an s3_upload' do
     let(:upload) { Upload.new }
-
+  
     it 'should respond to upload=' do
       upload.upload = {}
     end
 
     it 'should raise argument error with invalid keys' do
       expect { upload.upload = {:junk => 'foo'} }.to raise_error(ArgumentError)
+    end
+
+    it 'the upload should be invalid' do
+      upload.upload.should_not be_valid
+    end
+
+    context 'and the bucket is defined inline' do
+      it 'the upload should be valid' do
+        upload.upload_with_block = {:s3_key => 'foo/bar.png'}
+        upload.upload_with_block.should be_valid
+      end
     end
 
     context 'with a valid s3_key' do

@@ -1,0 +1,9 @@
+<div id="<%= id -%>" class="flash_s3-wrapper">
+  <span id="<%= button_id -%>" class="flash_s3-button"></span>
+</div>
+
+<%= javascript_tag do %>
+  (function ($) {
+    var swfu = new SWFUpload(<%= raw swf_upload_options_as_json -%>);
+  })(jQuery);
+<% end %>
