@@ -12,7 +12,9 @@ module FlashS3Helper
       :flash_url                => "/assets/vendor/flash_s3/swfupload.swf",
       :button_placeholder_id    => uploader_button_id(record, attachment),
       :button_width             => 61,
-      :button_height            => 22
+      :button_height            => 22,
+      :button_image_url         => "/assets/vendor/flash_s3/upload_button.png",
+      :button_cursor            => -2
     }.to_json
   end
 
