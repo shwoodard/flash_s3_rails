@@ -17,6 +17,31 @@ describe Upload do
       upload.upload.should_not be_valid
     end
 
+    context 'and the bucket is not defined inline' do
+      it 'should not be valid if bucket is not configured globally' do
+        upload.upload.should_not be_valid
+      end
+
+      context 'and the bucket is defined globally' do
+        it 'should be valid if the configuration is defined with the module' do
+          FlashS3.configure do |config|
+            config.bucket = "foo"
+          end
+
+          upload.upload = {:s3_key => 'foo/bar.png'}
+
+          upload.upload.should be_valid
+        end
+
+        it 'should be valid if the configuration is defined from the rails environemnt configs' do
+          upload.upload = {:s3_key => 'foo/bar.png'}
+
+          upload.upload.should be_valid
+          upload.upload.bucket.should == 'bas'
+        end
+      end
+    end
+
     context 'and the bucket is defined inline' do
       it 'the upload should be valid' do
         upload.upload_with_block = {:s3_key => 'foo/bar.png'}

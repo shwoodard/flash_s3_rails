@@ -14,7 +14,7 @@ module FlashS3
     end
 
     def configuration
-      @configuration ||= ActiveSupport::OrderedOptions.new
+      ::Rails.application.railties.engines.find {|engine| engine.is_a? FlashS3::Engine }.config.flash_s3
     end
   end
 

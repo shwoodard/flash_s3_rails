@@ -17,7 +17,6 @@ end
 
 Capybara.default_driver = :selenium
 
-
 DatabaseCleaner.strategy = :truncation
 
 RSpec.configure do |config|
