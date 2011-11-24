@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "flash_s3/version"
 
 Gem::Specification.new do |s|
-  s.name        = "flash_s3"
+  s.name        = "flash_s3_rails"
   s.version     = FlashS3::VERSION
   s.authors     = ["Sam Woodard"]
   s.email       = ["sam.h.woodard@gmail.com"]
