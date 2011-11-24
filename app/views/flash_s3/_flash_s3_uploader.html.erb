@@ -4,6 +4,10 @@
 
 <%= javascript_tag do %>
   (function ($) {
-    var swfu = new SWFUpload(<%= raw swf_upload_options_as_json -%>);
+    var swfu = new SWFUpload($.extend(<%= raw swf_upload_options_as_json -%>, {
+      file_dialog_complete_handler: function () {
+        this.startUpload();
+      }
+    }));
   })(jQuery);
 <% end %>

@@ -17,6 +17,10 @@ module FlashS3
       end
     end
 
+    def attachment_definition
+      @definition
+    end
+
     def valid?
       @definition.valid? && !@record.send(:"#{@name}_s3_key").nil?
     end

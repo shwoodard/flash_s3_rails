@@ -7,6 +7,7 @@ module FlashS3
 
   autoload :AttachmentDefinition
   autoload :Attachment
+  autoload :S3PostParams
 
   class << self
     def configure
@@ -15,6 +16,12 @@ module FlashS3
 
     def configuration
       ::Rails.application.railties.engines.find {|engine| engine.is_a? FlashS3::Engine }.config.flash_s3
+    end
+
+    private
+    def configuration=(config)
+      configuration.clear
+      config.each {|k,v| configuration.send(:"#{k}=", v)} 
     end
   end
 

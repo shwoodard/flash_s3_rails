@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/shwoodard/flash_s3_test.git
-  revision: 337259cda47cc95fe3b43f070b2460a48b16cd04
+  revision: 7b563d94203fec645fff320ff98a9572a69cad48
   specs:
     flash_s3_test (0.0.1)
       jquery-rails

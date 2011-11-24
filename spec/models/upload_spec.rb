@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rails_spec_helper'
 
 describe Upload do
-  context 'when declaring an s3_upload' do
+  context 'when declaring an s3_upload without an environmental config', :without_env_config => true do
     let(:upload) { Upload.new }
   
     it 'should respond to upload=' do
@@ -22,23 +22,16 @@ describe Upload do
         upload.upload.should_not be_valid
       end
 
-      context 'and the bucket is defined globally' do
-        it 'should be valid if the configuration is defined with the module' do
-          FlashS3.configure do |config|
-            config.bucket = "foo"
-          end
-
-          upload.upload = {:s3_key => 'foo/bar.png'}
-
-          upload.upload.should be_valid
+      it 'should be valid if the configuration is defined with the module' do
+        FlashS3.configure do |config|
+          config.bucket = "foo"
+          config.s3_access_key_id = "bas"
+          config.s3_secret_access_key = "fubar"
         end
 
-        it 'should be valid if the configuration is defined from the rails environemnt configs' do
-          upload.upload = {:s3_key => 'foo/bar.png'}
+        upload.upload = {:s3_key => 'foo/bar.png'}
 
-          upload.upload.should be_valid
-          upload.upload.bucket.should == 'bas'
-        end
+        upload.upload.should be_valid
       end
     end
 
@@ -62,6 +55,18 @@ describe Upload do
         upload.save
         upload.upload_s3_key.should == 'foo/bar.png'
       end
+    end
+  end
+
+  context 'when declaring an s3_upload with an environmental config' do
+    let(:upload) { Upload.new }
+
+
+    it 'should be valid if the configuration is defined from the rails environemnt configs' do
+      upload.upload = {:s3_key => 'foo/bar.png'}
+
+      upload.upload.should be_valid
+      upload.upload.bucket.should == 'bas'
     end
   end
 end
