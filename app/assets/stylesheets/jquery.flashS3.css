@@ -1,0 +1,15 @@
+.flash_s3-start_button_wrapper {
+  display:inline-block;
+  zoom:1;
+  *display:inline;
+}
+
+.flash_s3-start_button {
+  display:none;
+  width:60px;
+  height:28px;
+  background:url('/assets/vendor/flash_s3/start_button.png') 0 0 no-repeat;
+}
+
+.flash_s3-start_button:hover { background-position:0 -28px; }
+.flash_s3-start_button:active { background-position:0 -56px; }

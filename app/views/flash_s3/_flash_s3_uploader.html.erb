@@ -1,13 +1,11 @@
 <div id="<%= id -%>" class="flash_s3-wrapper">
+  <ol class="flash_s3-file_transfers"></ol>
   <span id="<%= button_id -%>" class="flash_s3-button"></span>
+  <div class="flash_s3-start_button_wrapper"><a class="flash_s3-start_button" href="javascript:;"></a>
 </div>
 
 <%= javascript_tag do %>
   (function ($) {
-    var swfu = new SWFUpload($.extend(<%= raw swf_upload_options_as_json -%>, {
-      file_dialog_complete_handler: function () {
-        this.startUpload();
-      }
-    }));
+    $('#<%= id -%>').flashS3(<%= raw swf_upload_options_as_json -%>);
   })(jQuery);
 <% end %>

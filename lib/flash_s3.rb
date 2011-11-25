@@ -46,7 +46,7 @@ module FlashS3
           s3_file_attachment_definitions[name] = attachment_definition
 
           define_method :"#{name}=" do |options|
-            options.assert_valid_keys(:s3_key)
+            options.symbolize_keys.assert_valid_keys(:s3_key)
             send(:"#{name}_s3_key=", options[:s3_key])
           end
 

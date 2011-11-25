@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/shwoodard/flash_s3_test.git
-  revision: 7b563d94203fec645fff320ff98a9572a69cad48
+  revision: 27d6d74bf62028ae152eded9b1051979a169bd68
   specs:
     flash_s3_test (0.0.1)
       jquery-rails
@@ -12,7 +12,7 @@ GIT
 PATH
   remote: .
   specs:
-    flash_s3 (0.0.1)
+    flash_s3_rails (0.0.1)
       activesupport
 
 GEM
@@ -156,7 +156,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   database_cleaner
-  flash_s3!
+  flash_s3_rails!
   flash_s3_test!
   mongrel
   rspec
