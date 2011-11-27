@@ -1,3 +1,29 @@
+.flash_s3-wrapper {
+  width:25em;
+  height:12em;
+  background:#99FFCC;
+  padding:1em;
+  display:table-cell;
+  vertical-align:bottom;
+  position:relative;
+}
+
+.flash_s3-wrapper ol.flash_s3-file_transfers {
+  padding:0;
+  margin:0;
+  position:absolute;
+  width:23em;
+  top:1em;
+  left:1em;
+  height:9em;
+  overflow:auto;
+}
+
+.flash_s3-wrapper li.flash_s3-file {
+  list-style:none;
+  padding:3px 0;
+}
+
 .flash_s3-start_button_wrapper {
   display:inline-block;
   zoom:1;
@@ -13,3 +39,5 @@
 
 .flash_s3-start_button:hover { background-position:0 -28px; }
 .flash_s3-start_button:active { background-position:0 -56px; }
+
+.flash_s3-progress_bar.ui-progressbar { height: 12px; }

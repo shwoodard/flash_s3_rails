@@ -6,7 +6,7 @@ module FlashS3
 
     def params
       {
-        "key" => "#{"#{s3_key_path}/" if s3_key_path.present?}#{"#{s3_key_guid}_" if s3_key_guid.present?}${filename}",
+        "key" => s3_key,
         "AWSAccessKeyId" => "#{s3_access_key_id}",
         "acl" => "#{s3_bucket_acl}",
         "policy" => "#{s3_policy}",
@@ -64,6 +64,13 @@ module FlashS3
 
     def s3_key_path
       @attachment_definition.s3_key_path
+    end
+
+    def s3_key
+      key = "${filename}"
+      key = "#{s3_key_guid}_" + key if s3_key_guid.present?
+      key = "#{s3_key_path}/" + key if s3_key_path.present?
+      key
     end
   end
 end

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/shwoodard/flash_s3_test.git
-  revision: 27d6d74bf62028ae152eded9b1051979a169bd68
+  revision: dd6837fffc0be6a21debfcdfe6a9584f4bfdf0cd
   specs:
     flash_s3_test (0.0.1)
       jquery-rails
@@ -68,7 +68,7 @@ GEM
     gem_plugin (0.2.3)
     hike (1.2.1)
     i18n (0.6.0)
-    jquery-rails (1.0.18)
+    jquery-rails (1.0.19)
       railties (~> 3.0)
       thor (~> 0.14)
     json (1.6.1)

@@ -10,18 +10,7 @@
       };
 
       var settings = $.extend({
-        debug: true,
-
-        file_dialog_complete_handler: function () {
-          // this.startUpload();
-        },
-
-        file_queued_handler: function (file) {
-          methods.elem().find('a.flash_s3-start_button').css('display', 'block');
-          var listItem = $('<li class="flash_s3-file" id="' + file.id + '"><div class="flash_s3-filename">' + file.name + '</div><div class="flash_s3-progress_bar" ></li>');
-          var progressbar = listItem.appendTo(elem.find('ol.flash_s3-file_transfers')).find('.flash_s3-progress_bar').progressbar();
-          listItem.data("flashS3Progressbar", progressbar);
-        },
+        file_queued_handler: methods.handleFileQueued,
 
         upload_success_handler: methods.handleFileSuccess,
 
@@ -45,12 +34,27 @@
 
     handleFileSuccess: function (file, serverData) {
       methods.progressbar.call(methods.elem(), file.id).progressbar('value', 100);
+      var settings = methods.elem().data('flashS3Settings');
+      var recordKlass = settings.custom_settings.record_class_name;
+      var attachmentName = settings.custom_settings.attachment_name;
+      var s3KeyQueryParamKey = recordKlass + '[' + attachmentName + '][s3_key]';
+      var params = {};
+      params[s3KeyQueryParamKey] = $($.parseXML(serverData)).find('Key').text();
+      params.s3_file_class_name = recordKlass;
+      $.post(settings.custom_settings.create_s3_attachment_url, params);
       this.startUpload();
     },
 
     handleFileProgress: function (file, bytesLoaded, bytesTotal) {
       var percent = Math.ceil((bytesLoaded / bytesTotal) * 100);
       methods.progressbar.call(methods.elem(), file.id).progressbar('value', percent);
+    },
+
+    handleFileQueued: function (file) {
+      methods.elem().find('a.flash_s3-start_button').css('display', 'block');
+      var listItem = $('<li class="flash_s3-file" id="' + file.id + '"><div class="flash_s3-filename">' + file.name + '</div><div class="flash_s3-progress_bar" ></li>');
+      var progressbar = listItem.appendTo(methods.elem().find('ol.flash_s3-file_transfers')).find('.flash_s3-progress_bar').progressbar();
+      listItem.data("flashS3Progressbar", progressbar);
     }
   };
 
