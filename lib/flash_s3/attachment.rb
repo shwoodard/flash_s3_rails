@@ -24,13 +24,5 @@ module FlashS3
     def valid?
       @definition.valid? && !@record.send(:"#{@name}_s3_key").nil?
     end
-
-    def changed?
-      @record.send(:"#{@name}_s3_key_changed?")
-    end
-
-    def persist!
-      true
-    end
   end
 end

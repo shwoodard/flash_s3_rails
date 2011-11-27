@@ -1,0 +1,6 @@
+<%= yield %>
+<%= javascript_tag do %>
+  (function ($) {
+    $('#<%= id -%>').flashS3(<%= raw swf_upload_options_as_json -%>);
+  })(jQuery);
+<% end %>

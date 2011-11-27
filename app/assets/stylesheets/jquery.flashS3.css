@@ -31,7 +31,7 @@
 }
 
 .flash_s3-start_button {
-  display:none;
+  display:block;
   width:60px;
   height:28px;
   background:url('/assets/vendor/flash_s3/start_button.png') 0 0 no-repeat;

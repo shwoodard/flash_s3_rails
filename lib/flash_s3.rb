@@ -54,19 +54,11 @@ module FlashS3
             Attachment.new(name, self.class.s3_file_attachment_definitions[name], self)
           end
 
-          before_save :persist_flash_s3_attachment_meta_data, :if => lambda {|record| record.flash_s3_meta_data_changed?(name) }
-        end
-      end
+          define_method(:"before_#{name}_save") {}
+          define_method(:"after_#{name}_save") {}
 
-      module InstanceMethods
-        def persist_flash_s3_attachment_meta_data
-          # hook here to do something ???
-          true
-        end
-
-        def flash_s3_meta_data_changed?(name)
-          return false unless self.class.s3_file_attachment_definitions.has_key?(name)
-          send(:"#{name}_s3_key_changed?")
+          before_save :"before_#{name}_save"
+          after_save :"after_#{name}_save"
         end
       end
     end
