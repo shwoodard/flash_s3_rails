@@ -2,3 +2,5 @@
 *.gem
 .bundle
 pkg/*
+lib/flash_s3_test/tmp
+lib/flash_s3_test/log
