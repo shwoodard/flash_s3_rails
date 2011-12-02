@@ -34,7 +34,7 @@ EOS
 end
 
 ENV["RAILS_ENV"] ||= 'test'
-require 'flash_s3_test/rails/flash_s3_test/config/application'
+require 'flash_s3_test/config/application'
 FlashS3Test::Application.load_tasks
 
 task :server => 'db:migrate:reset' do

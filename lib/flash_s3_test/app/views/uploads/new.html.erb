@@ -1,0 +1,4 @@
+<%=
+  flash_s3_uploader @upload, :upload,
+    :callbacks => {:before_upload => 'FlashS3Test.onBeforeUpload', :upload_success => 'FlashS3Test.onUploadSuccess'}
+%>

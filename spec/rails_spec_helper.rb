@@ -1,6 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
 
-require 'flash_s3_test/rails/flash_s3_test/config/environment'
+require 'flash_s3_test/config/environment'
 require 'capybara/dsl'
 require 'database_cleaner'
 require 'rspec/rails'
