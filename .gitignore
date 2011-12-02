@@ -4,3 +4,4 @@
 pkg/*
 lib/flash_s3_test/tmp
 lib/flash_s3_test/log
+lib/flash_s3_test/db/*.sqlite3
