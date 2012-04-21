@@ -30,4 +30,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "jquery-rails"
 
   s.add_runtime_dependency "activesupport"
+  s.add_runtime_dependency "jquery-ui-rails"
 end
