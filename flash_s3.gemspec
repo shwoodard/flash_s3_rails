@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "thin"
   s.add_development_dependency "capybara"
-  s.add_development_dependency "mongrel"
+  s.add_development_dependency "mongrel", '~> 1.2.0.pre2'
   s.add_development_dependency "database_cleaner"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "rails"

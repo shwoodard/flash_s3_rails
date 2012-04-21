@@ -19,7 +19,7 @@ module FlashS3
       @policy ||= Base64.encode64(
         %Q%{'expiration': '#{expiration_date}',
           'conditions': [
-          {'bucket': 'grtvdev'},
+          {'bucket': '#{s3_bucket}'},
           ['starts-with', '$key', "#{ s3_key_path.present? ? s3_key_path : ''}"],
           {'acl': '#{s3_bucket_acl}'},
           {'success_action_status': '201'},
@@ -38,6 +38,10 @@ module FlashS3
       ).gsub("\n","")  
     end
 
+    def s3_bucket
+      @attachment_definition.bucket
+    end
+
     def s3_access_key_id
       @attachment_definition.s3_access_key_id
     end
@@ -51,7 +55,7 @@ module FlashS3
     end
 
     def max_file_size
-      20.megabytes
+      1000.megabytes
     end
 
     def s3_bucket_acl

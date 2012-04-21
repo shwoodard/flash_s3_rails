@@ -6,5 +6,7 @@ describe "When uploading a file to s3" do
     visit '/'
     page.should have_content("Flash S3")
     page.should have_selector("#upload_upload.flash_s3-wrapper")
+    ugh = find('#SWFUpload_0')
+    # ugh.native.send_keys(:enter)
   end
 end

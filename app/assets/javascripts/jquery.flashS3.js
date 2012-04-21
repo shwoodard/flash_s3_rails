@@ -14,7 +14,9 @@
 
         upload_success_handler: methods.handleFileSuccess,
 
-        upload_progress_handler: methods.handleFileProgress
+        upload_progress_handler: methods.handleFileProgress,
+
+        file_size_limit : "0"
       }, options);
 
       elem.data('flashS3Settings', settings);
@@ -30,6 +32,10 @@
 
     progressbar: function (fileId) {
       return $('li#' + fileId).data('flashS3Progressbar');
+    },
+
+    sfsu: function () {
+      return methods.elem().data('flashS3Swfu');
     },
 
     handleFileSuccess: function (file, serverData) {
@@ -65,6 +71,12 @@
         listItem = $.globalEval(settings.custom_settings.file_upload_list_item_renderer).call(this, file);
       } else {
         listItem = methods.fileUplaodListItemRenderer.call(this, file);
+
+        $('.ui-icon-close', listItem).click(function (evt) {
+          evt.preventDefault();
+          methods.sfsu().cancelUpload(file.id);
+          listItem.remove();
+        });
       }
       methods.elem().find('ol.flash_s3-file_transfers').append(listItem);
     },
@@ -73,6 +85,7 @@
       var listItem = $('<li class="flash_s3-file" id="' + file.id + '">' +
           '<div class="flash_s3-filename">' + file.name + '</div>' +
           '<div class="flash_s3-progress_bar" />' +
+          '<div class="ui-icon-close ui-icon" />' +
           '</li>');
       var pb;
       if (methods.enablesJQueryUI()) {

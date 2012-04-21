@@ -22,6 +22,13 @@
 .flash_s3-wrapper li.flash_s3-file {
   list-style:none;
   padding:3px 0;
+  position:relative;
+}
+
+.flash_s3-wrapper li.flash_s3-file .ui-icon-close {
+  position:absolute;
+  right:-2px;
+  top:20px;
 }
 
 .flash_s3-start_button_wrapper {
@@ -40,4 +47,7 @@
 .flash_s3-start_button:hover { background-position:0 -28px; }
 .flash_s3-start_button:active { background-position:0 -56px; }
 
-.flash_s3-progress_bar.ui-progressbar { height: 12px; }
+.flash_s3-progress_bar.ui-progressbar {
+  height: 12px;
+  margin-right:10px;
+}

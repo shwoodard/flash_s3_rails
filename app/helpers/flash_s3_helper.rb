@@ -1,10 +1,10 @@
 module FlashS3Helper
   def flash_s3_uploader(record, attachment, create_url, options = {})
-    render :partial => 'flash_s3/flash_s3_uploader.html', :locals => {
+    render :partial => 'flash_s3/flash_s3_uploader', :formats => [:html], :locals => {
       :id => uploader_id(record, attachment),
       :button_id => uploader_button_id(record, attachment),
       :swf_upload_options_as_json => swf_upload_options_as_json(record, attachment, create_url, options)
-    }, :layout => 'layouts/flash_s3.html'
+    }, :layout => 'layouts/flash_s3'
   end
 
   private
