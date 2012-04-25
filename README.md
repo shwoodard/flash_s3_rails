@@ -46,7 +46,7 @@ Let's say it's called `Video`.
 has_attached_s3_file :media
 ```
 
-Substitute `media` for your upload name.
+Substitute your upload name for `media`.
 
 ### In the View
 
