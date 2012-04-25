@@ -64,6 +64,18 @@ Substitute your upload name for `media`.
 
 Note: You must use the url and not the path for your post callback hook.
 
+### In your Controller (post upload callback action)
+
+``` ruby
+def create
+  @video = Video.new(params[:video])
+  @video.save!
+  head :ok
+end
+```
+
+Or whatever ;)  The point is to `new`, `create`, `update_attributes`, etc, your Model instance with the `attachment_s3_key` column and `has_attached_s3_file` and save it!  Your s3_key will be saved automagically.
+
 ## Upcoming
 
 * Additional _custom_ post callback params
