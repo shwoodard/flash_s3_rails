@@ -39,13 +39,13 @@ Substitute `media` for your upload name.
 #### Erb
 
 ``` erb
-<%= flash_s3_uploader @model\_instance, :media, post\_upload\_callback\_url  %>
+<%= flash_s3_uploader @model_instance, :media, post_upload_callback_url  %>
 ```
 
 #### Haml
 
 ``` haml
-= flash_s3_uploader @model\_instance, :media, post\_upload\_callback\_url
+= flash_s3_uploader @model_instance, :media, post_upload_callback_url
 ```
 
 Note: You must use the url and not the path for your post callback hook.
