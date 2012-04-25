@@ -48,6 +48,13 @@ has_attached_s3_file :media
 
 Substitute your upload name for `media`.
 
+### In your `app/assets/javascripts/application.js`
+
+``` js
+//= require jquery.ui.all
+//= require jquery.flashS3
+```
+
 ### In the View
 
 #### Erb
