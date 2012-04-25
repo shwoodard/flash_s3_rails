@@ -6,7 +6,7 @@ Upload files to s3 with flash, including progress bars, in your Rails app.  Conf
 
 Add this line to your application's Gemfile:
 
-    gem 'flash_s3_rails', :require => 'flash_s3'
+    gem 'flash_s3_rails', '~> 0.0.1.beta1', :require => 'flash_s3'
 
 And then execute:
 
@@ -14,7 +14,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install flash_s3_rails
+    $ gem install flash_s3_rails --pre
 
 ## Usage
 
