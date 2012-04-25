@@ -29,13 +29,13 @@ config.flash_s3.s3_secret_access_key = "mysecretaccesskey"
 ### In a migration
 
 ``` ruby
-add_column :<your_attachment_name>_s3_key :string
+add_column :<your_model_name_pluralized>, :<your_attachment_name>_s3_key :string
 ```
 
 e.g.
 
 ``` ruby
-add_column :media_s3_key, :string
+add_column :videos, :media_s3_key, :string
 ```
 
 ### In the Model
