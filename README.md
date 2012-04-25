@@ -26,7 +26,21 @@ config.flash_s3.s3_access_key_id = "myaccesskey"
 config.flash_s3.s3_secret_access_key = "mysecretaccesskey"
 ```
 
+### In a migration
+
+``` ruby
+add_column :<your_attachment_name>_s3_key :string
+```
+
+e.g.
+
+``` ruby
+add_column :media_s3_key, :string
+```
+
 ### In the Model
+
+Let's say it's called `Video`.
 
 ``` ruby
 has_attached_s3_file :media
@@ -39,16 +53,23 @@ Substitute `media` for your upload name.
 #### Erb
 
 ``` erb
-<%= flash_s3_uploader @model_instance, :media, post_upload_callback_url  %>
+<%= flash_s3_uploader @video, :media, post_upload_callback_url  %>
 ```
 
 #### Haml
 
 ``` haml
-= flash_s3_uploader @model_instance, :media, post_upload_callback_url
+= flash_s3_uploader @video, :media, post_upload_callback_url
 ```
 
 Note: You must use the url and not the path for your post callback hook.
+
+## Upcoming
+
+* Additional _custom_ post callback params
+* More configurable, e.g. max file size, file type(s) accepted
+* Drop jquery-ui dependency and implement a simple css progress bar
+* Make the green box a little less ugly ;)
 
 ## Contributing
 
