@@ -55,6 +55,14 @@ Substitute your upload name for `media`.
 //= require jquery.flashS3
 ```
 
+### In your `app/assets/stylesheets/application.css`
+
+``` css
+/*
+ *= require jquery.flashS3
+ */
+```
+
 ### In the View
 
 #### Erb
