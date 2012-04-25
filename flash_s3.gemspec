@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = FlashS3::VERSION
   s.authors     = ["Sam Woodard"]
   s.email       = ["sam.h.woodard@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/shwoodard/flash_s3_rails"
   s.summary     = %q{Direct multi-file uploader to s3}
   s.description = %q{Direct multi-file uploader to s3}
 
